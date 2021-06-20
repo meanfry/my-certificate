@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, FormEvent, useState } from "react";
+import { BaseSyntheticEvent, useState } from "react";
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 
 import './Home.css';
