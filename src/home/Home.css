@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 16px;
+}
+
+.container section {
+    flex: 1 1 100%;
+}
+
+.file-upload-block {
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.file-upload-block input {
+    display: none;
+}
+
+.file-upload-block label {
+    border: 1px solid #ccc;
+    /* display: inline-block; */
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.generate-pdf-block {
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.generate-pdf-block button {
+    border: 1px solid #ccc;
+    /* display: inline-block; */
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.form-input input {
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+.text-center {
+    text-align: center;
+}
