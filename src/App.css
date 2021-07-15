@@ -6,12 +6,87 @@
   box-sizing: border-box;
 }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
-pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset,
-form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
-details, embed, figure,  figcaption, footer, header, hgroup, menu, nav, output, ruby, section,
-summary, time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -58,6 +133,13 @@ body {
 body {
   min-height: 100%;
   font-family: "Roboto", sans-serif;
+  background-color: lightblue;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 header {
@@ -65,7 +147,7 @@ header {
   background-color: darkblue;
   color: white;
   padding: 0 12px;
-  position: absolute;
+  position: sticky;
   top: 0;
   width: 100%;
 
@@ -79,7 +161,11 @@ header h1 {
 }
 
 .spacer {
-  height: 80px;
+  height: 30px;
+}
+
+.main-content {
+  flex: 1 1 100%;
 }
 
 .btn {
@@ -115,4 +201,21 @@ header h1 {
 .btn:disabled {
   background-color: grey;
   pointer-events: none;
+}
+
+footer {
+  flex: 1 1 auto;
+  
+  display: flex;
+  justify-content: center;
+  background: white;
+  padding: 10px;
+}
+
+.show {
+  display: block;
+}
+
+.remove {
+  display: none;
 }
