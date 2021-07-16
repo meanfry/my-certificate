@@ -18,6 +18,7 @@ reportWebVitals();
 
 // console.log fallback for mobile
 if (typeof console === "undefined") {
+  // eslint-disable-next-line no-native-reassign
   console = {
     log: function() {},
     error: function() {},
