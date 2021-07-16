@@ -150,7 +150,6 @@ export const HomeComponent = () => {
 }
 
 const downloadPdf = (pdfB64: string) => {
-    console.log(pdfB64)
     const link = document.createElement("a");
     link.href = pdfB64;
     link.download = "certificate_updated";
