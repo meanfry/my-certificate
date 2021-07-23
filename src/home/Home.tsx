@@ -13,16 +13,17 @@ export const HomeComponent = () => {
     const [base64PDF, setBase64PDF] = useState("");
     const [removePr, setRemovePr] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
+    const [imageRotation, setImageRotation] = useState<number>(0);
 
     const pictureUpload = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         async function updatePDF() {
-            const pdfB64 = await processPdf(pdfFile, imageFile, userName, removePr);
+            const pdfB64 = await processPdf(pdfFile, imageFile, userName, removePr, imageRotation);
             if (pdfB64) setBase64PDF(pdfB64);
         }
         updatePDF();
-    }, [pdfFile, imageFile, userName, removePr])
+    }, [pdfFile, imageFile, userName, removePr, imageRotation])
 
     const handleFileUpload = (e: BaseSyntheticEvent) => {
         const file = e.target.files[0];
@@ -63,6 +64,10 @@ export const HomeComponent = () => {
             case "removePr":
                 setRemovePr(true);
                 break;
+            case "rotateUserImage":
+                console.log((imageRotation + 90) % 360)
+                setImageRotation(rotation => (rotation + 90) % 360)
+                break;
         }
     }
 
@@ -97,6 +102,21 @@ export const HomeComponent = () => {
                                         Update Photo on Certificate
                                     </div>
                                 </div>
+                                {
+                                    imageFile &&
+                                    <div className="action-button" id="rotate-image" data-settings="rotateUserImage">
+                                        <div className="icon">
+                                            {
+                                                // eslint-disable-next-line jsx-a11y/img-redundant-alt
+                                                <img src="/rotate-image.png" alt="Rotate Uploaded Photo" />
+                                            }
+                                        </div>
+                                        <div className="label">
+                                            Rotate Uploaded Photo
+                                        </div>
+                                    </div>
+                                }
+
                                 <div className="action-button" id="update-name" data-settings="replaceWithUserName">
                                     <div className="icon">
                                         <img src="/editing.png" alt="update name" />

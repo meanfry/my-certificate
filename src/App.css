@@ -180,6 +180,7 @@ header h1 {
   min-width: 10ch;
   min-height: 44px;
   text-align: center;
+  cursor: pointer;
 
   transition: 220ms all ease-in-out;
 }
