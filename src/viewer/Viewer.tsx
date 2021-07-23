@@ -17,7 +17,7 @@ const Viewer = (props: { dataUri: string }) => {
                     console.error("Canvas not found");
                     return;
                 }
-                const context = canvas.getContext('2d');
+                const context = canvas.getContext('2d', { alpha: false, desynchronized: true });
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
 

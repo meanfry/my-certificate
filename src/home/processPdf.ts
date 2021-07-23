@@ -36,12 +36,12 @@ export const processPdf = async (pdfFile: File, imageFile: File, userName: Strin
                 x: 35,
                 y: 144,
                 width: 100,
-                height: 100 * aspectRatio,
+                height: Math.round(100 * aspectRatio),
                 rotate: degrees(imageRotation)
             }
             if (jpgDims.width > jpgDims.height) {
                 imageOptions.height = 100; 
-                imageOptions.width = 100 / aspectRatio
+                imageOptions.width = Math.round(100 / aspectRatio)
             }
             if (imageRotation === 90) {
                 imageOptions.x += imageOptions.height;
