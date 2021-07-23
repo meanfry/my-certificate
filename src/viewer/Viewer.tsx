@@ -11,7 +11,7 @@ const Viewer = (props: { dataUri: string }) => {
             pdf.getPage(1).then((page: any) => {
                 console.log("Certificate Page Loaded");
 
-                const viewport = page.getViewport({ scale: 1.5 });
+                const viewport = page.getViewport({ scale: 1 });
                 const canvas = document.getElementById("pdf-viewer") as HTMLCanvasElement;
                 if (!canvas) {
                     console.error("Canvas not found");
