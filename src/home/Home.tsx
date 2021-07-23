@@ -65,7 +65,6 @@ export const HomeComponent = () => {
                 setRemovePr(true);
                 break;
             case "rotateUserImage":
-                console.log((imageRotation + 90) % 360)
                 setImageRotation(rotation => (rotation + 90) % 360)
                 break;
         }
