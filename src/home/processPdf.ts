@@ -1,6 +1,6 @@
 import { degrees, PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 
-export const processPdf = async (pdfFile: File, imageFile: File, userName: String, removePr: boolean, imageRotation: number) => {
+export const processPdf = async (pdfFile: File, imageFile: string, userName: String, removePr: boolean, imageRotation: number) => {
     if (!pdfFile) return "";
     const data = await pdfFile.arrayBuffer();
     const pdfDoc = await PDFDocument.load(data);
@@ -27,9 +27,8 @@ export const processPdf = async (pdfFile: File, imageFile: File, userName: Strin
 
         if (imageFile) {
             // draw user image
-            const embedMethod = (imageFile.name.split('.').pop() === "png" ? pdfDoc.embedPng : pdfDoc.embedJpg).bind(pdfDoc);
-            const imageData = await imageFile.arrayBuffer();
-            const imageForPdf = await embedMethod(imageData);
+            const embedMethod = (imageFile.startsWith("data:image/png") ? pdfDoc.embedPng : pdfDoc.embedJpg).bind(pdfDoc);
+            const imageForPdf = await embedMethod(imageFile);
             const jpgDims = imageForPdf.scale(1);
             const aspectRatio = jpgDims.height / jpgDims.width;
             const imageOptions = {

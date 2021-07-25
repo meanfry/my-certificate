@@ -3,10 +3,11 @@ import { BaseSyntheticEvent, useEffect, useRef, useState } from "react";
 import Viewer from '../viewer/Viewer';
 import { processPdf } from "./processPdf";
 import './Home.css';
+import { resizeImage } from "./resizeImage";
 
 export const HomeComponent = () => {
     const [pdfFile, setPdfFile] = useState<any>(undefined);
-    const [imageFile, setImageFile] = useState<any>(undefined);
+    const [imageFile, setImageFile] = useState<string>("");
     // two states for userName to avoid render on every input change.
     const [userNameForModal, setUserNameForModal] = useState(""); // for the actual input field on modal
     const [userName, setUserName] = useState(""); // for name on certificate - update only on button click
@@ -25,12 +26,13 @@ export const HomeComponent = () => {
         updatePDF();
     }, [pdfFile, imageFile, userName, removePr, imageRotation])
 
-    const handleFileUpload = (e: BaseSyntheticEvent) => {
+    const handleFileUpload = async (e: BaseSyntheticEvent) => {
         const file = e.target.files[0];
         if (!file) return;
         switch (e.target.name) {
             case "picture":
-                setImageFile(file);
+                const resolutionAdjustedImage = await resizeImage(file);
+                setImageFile(resolutionAdjustedImage);
                 break;
             case "certificate-pdf":
                 setPdfFile(file);
