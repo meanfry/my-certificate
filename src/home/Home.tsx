@@ -85,8 +85,10 @@ export const HomeComponent = () => {
                             Updated certificate is not a valid document.
                             <br />
                             By continuing, you agree to make cosmetic changes to a copy of your certificate.
+                            <br />
+                            Your certificate, photo, name or any other identifiable information is not collected.
                         </div>
-                        <label htmlFor="certificate-pdf" className="btn">Upload Certificate</label>
+                        <label htmlFor="certificate-pdf" className="btn umami--click--load-certificate">Load Certificate</label>
                         <input type="file" id="certificate-pdf" name="certificate-pdf" accept="application/pdf"
                             onChange={handleFileUpload}></input>
                     </div>
@@ -134,7 +136,7 @@ export const HomeComponent = () => {
                                         Update Name on Certificate
                                     </div>
                                 </div>
-                                <div className="action-button" id="download">
+                                <div className="action-button umami--click--download-certificate" id="download">
                                     <div className="icon">
                                         <img src="/download.png" alt="download demodified certificate" />
                                     </div>
