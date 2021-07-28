@@ -95,6 +95,10 @@ video {
   vertical-align: baseline;
 }
 
+strong {
+  font-weight: bold;
+}
+
 button {
   border: none;
   margin: 0;

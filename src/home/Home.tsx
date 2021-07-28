@@ -77,7 +77,15 @@ export const HomeComponent = () => {
             {
                 !base64PDF &&
                 <section className="user-input">
+
                     <div className="file-upload-block">
+                        <div style={{ "margin": "12px 0 24px" }}>
+                            <strong>Disclaimer</strong>
+                            <br />
+                            Updated certificate is not a valid document.
+                            <br />
+                            By continuing, you agree to make cosmetic changes to a copy of your certificate.
+                        </div>
                         <label htmlFor="certificate-pdf" className="btn">Upload Certificate</label>
                         <input type="file" id="certificate-pdf" name="certificate-pdf" accept="application/pdf"
                             onChange={handleFileUpload}></input>
@@ -96,7 +104,7 @@ export const HomeComponent = () => {
                                             // eslint-disable-next-line jsx-a11y/img-redundant-alt
                                             <img src="/upload-user.png" alt="Upload photo to replace Modi photo in certificate" />
                                         }
-                                        <input type="file" id="picture" name="picture" accept=".jpg,.png"
+                                        <input type="file" id="picture" name="picture" accept="image/x-png,image/jpeg"
                                             onChange={handleFileUpload} ref={pictureUpload}></input>
                                     </div>
                                     <div className="label">
