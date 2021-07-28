@@ -111,7 +111,7 @@ export const HomeComponent = () => {
                                     <div className="icon">
                                         {
                                             // eslint-disable-next-line jsx-a11y/img-redundant-alt
-                                            <img src="/upload-user.png" alt="Upload photo to replace Modi photo in certificate" />
+                                            <img src="/upload-user.png" alt="Upload photo to replace existing photo in certificate" />
                                         }
                                         <input type="file" id="picture" name="picture" accept="image/x-png,image/jpeg"
                                             onChange={handleFileUpload} ref={pictureUpload}></input>
@@ -145,7 +145,7 @@ export const HomeComponent = () => {
                                 </div>
                                 <div className="action-button" id="download">
                                     <div className="icon">
-                                        <img src="/download.png" alt="download demodified certificate" />
+                                        <img src="/download.png" alt="download updated certificate" />
                                     </div>
                                     <div className="label">
                                         Download Updated Certificate
@@ -153,9 +153,9 @@ export const HomeComponent = () => {
                                 </div>
                             </>)
                             :
-                            <div className="action-button" id="demodify" data-settings="removePr">
+                            <div className="action-button" id="clear-pr" data-settings="removePr">
                                 <div className="icon">
-                                    <img src="/sweeping.png" alt="demodify" />
+                                    <img src="/sweeping.png" alt="clear-pr" />
                                 </div>
                                 <div className="label">
                                     Remove Existing Photo and Name
