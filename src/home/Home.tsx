@@ -4,6 +4,7 @@ import Viewer from '../viewer/Viewer';
 import { processPdf } from "./processPdf";
 import './Home.css';
 import { resizeImage } from "./resizeImage";
+import { logEvent } from "../analytics/analytics";
 
 export const HomeComponent = () => {
     const [pdfFile, setPdfFile] = useState<any>(undefined);
@@ -35,6 +36,7 @@ export const HomeComponent = () => {
                 setImageFile(resolutionAdjustedImage);
                 break;
             case "certificate-pdf":
+                logEvent("load-cert")
                 setPdfFile(file);
                 break;
         }
@@ -51,6 +53,7 @@ export const HomeComponent = () => {
 
     const handleActionButtonClick = (event: any) => {
         if (event.target.id === "download") {
+            logEvent("download")
             downloadPdf(base64PDF);
             return;
         }
@@ -88,7 +91,7 @@ export const HomeComponent = () => {
                             <br />
                             Your certificate, photo, name or any other identifiable information is not collected.
                         </div>
-                        <label htmlFor="certificate-pdf" className="btn umami--click--load-certificate">Load Certificate</label>
+                        <label htmlFor="certificate-pdf" className="btn">Load Certificate</label>
                         <input type="file" id="certificate-pdf" name="certificate-pdf" accept="application/pdf"
                             onChange={handleFileUpload}></input>
                     </div>
@@ -136,7 +139,7 @@ export const HomeComponent = () => {
                                         Update Name on Certificate
                                     </div>
                                 </div>
-                                <div className="action-button umami--click--download-certificate" id="download">
+                                <div className="action-button" id="download">
                                     <div className="icon">
                                         <img src="/download.png" alt="download demodified certificate" />
                                     </div>
