@@ -1,3 +1,4 @@
 export const logEvent = (detail: string, type?: string) => {
-    (window as any).umami.trackEvent(detail, type || "click")
+    const tracker = (window as any)?.umami?.trackEvent;
+    if (tracker) tracker(detail, type || "click")
 }
