@@ -137,7 +137,7 @@ body {
 body {
   min-height: 100%;
   font-family: "Roboto", sans-serif;
-  background-color: lightblue;
+  background-color: #CDE6F5;
 }
 
 .App {
@@ -148,7 +148,7 @@ body {
 
 header {
   height: 80px;
-  background-color: darkblue;
+  background-color: #5762D5;
   color: white;
   padding: 0 12px;
   position: sticky;
