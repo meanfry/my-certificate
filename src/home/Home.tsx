@@ -91,7 +91,7 @@ export const HomeComponent = () => {
                             <br />
                             Your certificate, photo, name or any other identifiable information is not collected.
                         </div>
-                        <label htmlFor="certificate-pdf" className="btn">Load Certificate</label>
+                        <label htmlFor="certificate-pdf" className="btn">Open Certificate</label>
                         <input type="file" id="certificate-pdf" name="certificate-pdf" accept="application/pdf"
                             onChange={handleFileUpload}></input>
                     </div>
