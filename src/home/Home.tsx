@@ -79,23 +79,27 @@ export const HomeComponent = () => {
         <div className="container">
             {
                 !base64PDF &&
-                <section className="user-input">
-
-                    <div className="file-upload-block">
-                        <div style={{ "margin": "12px 0 24px" }}>
-                            <strong>Disclaimer</strong>
-                            <br />
-                            Updated certificate is not a valid document.
-                            <br />
-                            By continuing, you agree to make cosmetic changes to a copy of your certificate.
-                            <br />
-                            Your certificate, photo, name or any other identifiable information is not collected.
+                <>
+                    <section className="home">
+                        <div className="file-upload-block">
+                            <div style={{ "margin": "12px 0 24px" }}>
+                                <strong>Disclaimer</strong>
+                                <br />
+                                Updated certificate is not a valid document.
+                                <br />
+                                By continuing, you agree to make cosmetic changes to a copy of your certificate.
+                                <br />
+                                Your certificate, photo, name or any other identifiable information is not collected.
+                            </div>
+                            <label htmlFor="certificate-pdf" className="btn">Open Certificate</label>
+                            <input type="file" id="certificate-pdf" name="certificate-pdf" accept="application/pdf"
+                                onChange={handleFileUpload}></input>
                         </div>
-                        <label htmlFor="certificate-pdf" className="btn">Open Certificate</label>
-                        <input type="file" id="certificate-pdf" name="certificate-pdf" accept="application/pdf"
-                            onChange={handleFileUpload}></input>
-                    </div>
-                </section>
+                        <div className="home-image">
+                            <img src="/home.png" alt="Sample of certificate with details updated for demo" />
+                        </div>
+                    </section>
+                </>
             }
             {
                 base64PDF &&
