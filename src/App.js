@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App" >
       <header>
-        <h1 onClick={_ => window.location.reload()}>My Vaccine My Photo</h1>
+        <h1 onClick={_ => window.location.reload()}>My Certificate</h1>
       </header>
       <section className="main-content">
         <div className="spacer"></div>
