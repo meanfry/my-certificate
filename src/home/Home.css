@@ -61,9 +61,30 @@ input.form-input  {
     right: 50px;
     bottom: 50px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     color: white;
     background: rgba(0, 0, 0, 0.6);
+    padding: 8px 0;
+}
+
+.minimize {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid darkgrey;
+
+    cursor: pointer;
+}
+
+.minimize:hover span {
+    box-shadow: 0 6px 14px 0 #666;
+    transform: scale(1.25);
+    pointer-events: none;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
 }
 
 .action-button {
@@ -78,6 +99,10 @@ input.form-input  {
     padding: 20px;
     pointer-events: none;
     flex: 1 1 auto
+}
+
+.no-label .action-button .label {
+    display: none;
 }
 
 .action-button .icon {

@@ -16,6 +16,7 @@ export const HomeComponent = () => {
     const [removePr, setRemovePr] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
     const [imageRotation, setImageRotation] = useState<number>(0);
+    const [minimized, setMinimized] = useState<boolean>(false);
 
     const pictureUpload = useRef<HTMLInputElement>(null);
 
@@ -72,6 +73,9 @@ export const HomeComponent = () => {
             case "rotateUserImage":
                 setImageRotation(rotation => (rotation + 90) % 360)
                 break;
+            case "minimize":
+                setMinimized(m => !m);
+                break;
         }
     }
 
@@ -103,66 +107,73 @@ export const HomeComponent = () => {
             }
             {
                 base64PDF &&
-                <div className="action-buttons" onClickCapture={handleActionButtonClick}>
-                    {
-                        removePr ?
-                            (<>
-                                <div className="action-button" id="upload-image" data-settings="replaceWithUserImage">
-                                    <div className="icon">
-                                        {
-                                            // eslint-disable-next-line jsx-a11y/img-redundant-alt
-                                            <img src="/upload-user.png" alt="Upload photo to replace existing photo in certificate" />
-                                        }
-                                        <input type="file" id="picture" name="picture" accept="image/x-png,image/jpeg"
-                                            onChange={handleFileUpload} ref={pictureUpload}></input>
-                                    </div>
-                                    <div className="label">
-                                        Update Photo on Certificate
-                                    </div>
-                                </div>
-                                {
-                                    imageFile &&
-                                    <div className="action-button" id="rotate-image" data-settings="rotateUserImage">
+                <div className={`action-buttons ${minimized ? 'no-label' : ''}`}  onClickCapture={handleActionButtonClick}>
+                    <div className="minimize" data-settings="minimize">
+                        {
+                            minimized ? <span>&lt;&lt;</span> : <span>&gt;&gt;</span>
+                        }
+                        
+                    </div>
+                    <div className="buttons">
+                        {
+                            removePr ?
+                                (<>
+                                    <div className="action-button" id="upload-image" data-settings="replaceWithUserImage">
                                         <div className="icon">
                                             {
                                                 // eslint-disable-next-line jsx-a11y/img-redundant-alt
-                                                <img src="/rotate-image.png" alt="Rotate Uploaded Photo" />
+                                                <img src="/upload-user.png" alt="Upload photo to replace existing photo in certificate" />
                                             }
+                                            <input type="file" id="picture" name="picture" accept="image/x-png,image/jpeg"
+                                                onChange={handleFileUpload} ref={pictureUpload}></input>
                                         </div>
                                         <div className="label">
-                                            Rotate Uploaded Photo
+                                            Update Photo on Certificate
                                         </div>
                                     </div>
-                                }
+                                    {
+                                        imageFile &&
+                                        <div className="action-button" id="rotate-image" data-settings="rotateUserImage">
+                                            <div className="icon">
+                                                {
+                                                    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+                                                    <img src="/rotate-image.png" alt="Rotate Uploaded Photo" />
+                                                }
+                                            </div>
+                                            <div className="label">
+                                                Rotate Uploaded Photo
+                                            </div>
+                                        </div>
+                                    }
 
-                                <div className="action-button" id="update-name" data-settings="replaceWithUserName">
+                                    <div className="action-button" id="update-name" data-settings="replaceWithUserName">
+                                        <div className="icon">
+                                            <img src="/editing.png" alt="update name" />
+                                        </div>
+                                        <div className="label">
+                                            Update Name on Certificate
+                                        </div>
+                                    </div>
+                                    <div className="action-button" id="download">
+                                        <div className="icon">
+                                            <img src="/download.png" alt="download updated certificate" />
+                                        </div>
+                                        <div className="label">
+                                            Download Updated Certificate
+                                        </div>
+                                    </div>
+                                </>)
+                                :
+                                <div className="action-button" id="clear-pr" data-settings="removePr">
                                     <div className="icon">
-                                        <img src="/editing.png" alt="update name" />
+                                        <img src="/sweeping.png" alt="clear-pr" />
                                     </div>
                                     <div className="label">
-                                        Update Name on Certificate
+                                        Remove Existing Photo and Name
                                     </div>
                                 </div>
-                                <div className="action-button" id="download">
-                                    <div className="icon">
-                                        <img src="/download.png" alt="download updated certificate" />
-                                    </div>
-                                    <div className="label">
-                                        Download Updated Certificate
-                                    </div>
-                                </div>
-                            </>)
-                            :
-                            <div className="action-button" id="clear-pr" data-settings="removePr">
-                                <div className="icon">
-                                    <img src="/sweeping.png" alt="clear-pr" />
-                                </div>
-                                <div className="label">
-                                    Remove Existing Photo and Name
-                                </div>
-                            </div>
-                    }
-
+                        }
+                    </div>
 
                 </div>
             }
